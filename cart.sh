@@ -17,7 +17,7 @@ cd /app
 
 echo -e "\e[33m Extract Application content\e[0m"
 unzip /tmp/cart.zip &>>/tmp/roboshop.log
-
+cd/app
 
 echo -e "\e[33m Install NodeJS Dependencies\e[0m"
 npm install &>>/tmp/roboshop.log
