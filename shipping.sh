@@ -16,7 +16,7 @@ cd /app
 unzip /tmp/shipping.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m Download Maven Dependencies \e[0m"
-cd/app
+cd /app
 mvn clean package &>>/tmp/roboshop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/roboshop.log
 
