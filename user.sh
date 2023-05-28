@@ -30,8 +30,8 @@ cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service  &>
 
 echo -e "\e[33m\e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
-systemctl enable catalogue &>>/tmp/roboshop.log
-systemctl restart catalogue &>>/tmp/roboshop.log
+systemctl enable user &>>/tmp/roboshop.log
+systemctl restart user &>>/tmp/roboshop.log
 
 echo -e "\e[33m Copy Mongodb.repo\e[0m"
 cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>/tmp/roboshop.log
@@ -46,13 +46,3 @@ mongo --host mongodb-dev.devopsblessed.store </app/schema/user.js &>>/tmp/robosh
 
 
 
-
-
-
-
-
-
-
-
-systemctl enable user
-systemctl restart user
