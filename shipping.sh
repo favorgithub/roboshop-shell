@@ -12,6 +12,7 @@ echo -e "\e[33m Download Application Content \e[0m"
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m Extract Application Content \e[0m"
+cd /app
 unzip /tmp/shipping.zip &>>/tmp/roboshop.log
 
 echo -e "\e[33m Download Maven Dependencies \e[0m"
@@ -22,10 +23,10 @@ echo -e "\e[33m Install Mysql Client \e[0m"
 yum install mysql -y &>>/tmp/roboshop.log
 
 echo -e "\e[33m Load Schema \e[0m"
-mysql -h mysql-dev.devopsblessed.store -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>/tmp/roboshop.log
+mysql -h mysql-dev.devopsblessed.store -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>/tmp/roboshop.log
 
 echo -e "\e[33m Setup SystemD Service\e[0m"
-cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service  &>>/tmp/roboshop.log
 
 echo -e "\e[33m Start Shipping Service \e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
