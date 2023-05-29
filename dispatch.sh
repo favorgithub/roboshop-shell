@@ -29,3 +29,4 @@ echo -e "\e[33m Start Dispatch Services \e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
 systemctl enable dispatch &>>/tmp/roboshop.log
 systemctl restart dispatch &>>/tmp/roboshop.log
+
