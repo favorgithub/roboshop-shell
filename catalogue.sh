@@ -41,5 +41,3 @@ yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 
 echo -e "${color} Load Schema${nocolor}"
 mongo --host mongodb-dev.devopsblessed.store </app/schema/$component.js &>>/tmp/roboshop.log
-
-
