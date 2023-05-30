@@ -1,7 +1,7 @@
 color="\e[35m"
 nocolor="${nocolor}"
 log_file="/tmp/roboshop.log"
-app_path="${app_path}"
+app_path="/app"
 
 app_presetup(){
 
