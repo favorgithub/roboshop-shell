@@ -38,7 +38,6 @@ nodejs() {
 
 }
 
-
 mongo_schema_setup() {
 
   echo -e "${color} Copy Mongodb.repo ${nocolor}"
