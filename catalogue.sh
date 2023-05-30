@@ -11,12 +11,12 @@ echo -e "${color} Add Application User ${nocolor}"
 useradd roboshop &>>$log_file
 
 echo -e "${color} Create Application Directory ${nocolor}"
-rm -rf ${/app_path} &>>$log_file
-mkdir ${/app_path}
+rm -rf ${app_path} &>>$log_file
+mkdir ${app_path}
 
 echo -e "${color} Download Application Content ${nocolor}"
 curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
-cd ${/app_path}
+cd ${app_path}
 
 echo -e "${color} Extract Application content ${nocolor}"
 unzip /tmp/$component.zip &>>$log_file
@@ -39,4 +39,4 @@ echo -e "${color}Install Mongodb Client ${nocolor}"
 yum install mongodb-org-shell -y &>>$log_file
 
 echo -e "${color} Load Schema ${nocolor}"
-mongo --host mongodb-dev.devopsblessed.store <${/app_path}/schema/$component.js &>>$log_file
+mongo --host mongodb-dev.devopsblessed.store <${app_path}/schema/$component.js &>>$log_file
