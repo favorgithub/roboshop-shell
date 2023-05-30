@@ -77,17 +77,7 @@ maven(){
   yum install maven -y  &>>$log_file
   
   app_presetup
-  
-  echo -e "${color} Create Application Directory ${nocolor}"
-  rm -rf ${app_path}  &>>$log_file
-  mkdir ${app_path}
-  
-  echo -e "${color} Download Application Content ${nocolor}"
-  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip  &>>$log_file
-  
-  echo -e "${color} Extract Application Content ${nocolor}"
-  cd ${app_path}
-  unzip /tmp/${shipping}.zip &>>$log_file
+
   
   echo -e "${color} Download Maven Dependencies ${nocolor}"
   cd ${app_path}
