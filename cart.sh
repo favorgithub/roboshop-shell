@@ -1,35 +1,35 @@
 source common.sh
-component=cart
+component=${component}
 
 
-echo -e "\e[33m Configuring NodeJS Repos\e[0m"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash  &>>/tmp/roboshop.log
+echo -e "${color} Configuring NodeJS Repos\e[0m"
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash  &>>${log_file}
 
-echo -e "\e[33m install NodeJS\e[0m"
-yum install nodejs -y  &>>/tmp/roboshop.log
+echo -e "${color} install NodeJS\e[0m"
+yum install nodejs -y  &>>${log_file}
 
-echo -e "\e[33m Add Application User\e[0m"
-useradd roboshop  &>>/tmp/roboshop.log
+echo -e "${color} Add Application User\e[0m"
+useradd roboshop  &>>${log_file}
 
-echo -e "\e[33m Create Application Directory\e[0m"
-rm -rf /app  &>>/tmp/roboshop.log
-mkdir /app
+echo -e "${color} Create Application Directory${nocolor}"
+rm -rf ${app_path}  &>>${log_file}
+mkdir ${app_path}
 
-echo -e "\e[33m Download Application Content\e[0m"
-curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} Download Application Content${nocolor}"
+curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
+cd ${app_path}
 
-echo -e "\e[33m Extract Application content\e[0m"
-unzip /tmp/cart.zip  &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} Extract Application content${nocolor}"
+unzip /tmp/${component}.zip  &>>${log_file}
+cd ${app_path}
 
-echo -e "\e[33m Install NodeJS Dependencies\e[0m"
-npm install  &>>/tmp/roboshop.log
+echo -e "${color} Install NodeJS Dependencies${nocolor}"
+npm install  &>>${log_file}
 
-echo -e "\e[33m Setup SystemD Service\e[0m"
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service  &>>/tmp/roboshop.log
+echo -e "${color} Setup SystemD Service${nocolor}"
+cp /home/centos/roboshop-shell/${component}.service /etc/systemd/system/${component}.service  &>>${log_file}
 
-echo -e "\e[33m Start User Service \e[0m"
-systemctl daemon-reload  &>>/tmp/roboshop.log
-systemctl enable cart  &>>/tmp/roboshop.log
-systemctl restart cart &>>/tmp/roboshop.log
+echo -e "${color} Start User Service ${nocolor}"
+systemctl daemon-reload  &>>${log_file}
+systemctl enable ${component}  &>>${log_file}
+systemctl restart ${component} &>>${log_file}
