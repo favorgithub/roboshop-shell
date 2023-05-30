@@ -3,3 +3,5 @@ component=${component}
 
 
 nodejs
+
+mongo_schema_setup
