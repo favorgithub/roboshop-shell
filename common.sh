@@ -1,5 +1,5 @@
 color="\e[35m"
-nocolor="${nocolor}"
+nocolor="\e[0m"
 log_file="/tmp/roboshop.log"
 app_path="/app"
 
@@ -89,4 +89,18 @@ maven(){
 
   systemd_setup
   
+}
+
+python(){
+ echo -e "${color}  Install Python36 ${nocolor}"
+ yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
+
+ app_presetup
+
+ echo -e "${color} Install Application Dependencies ${nocolor}"
+ cd /app
+ pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
+
+
+systemd_setup
 }
