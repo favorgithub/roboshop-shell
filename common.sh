@@ -8,7 +8,7 @@ stat_check(){
         echo SUCCESS
       else
         echo FAILURE
-      fi
+   fi
 }
 
 app_presetup(){
