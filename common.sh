@@ -38,7 +38,7 @@ app_presetup(){
 
     stat_check $?
 
-
+}
 systemd_setup(){
 
     echo -e "${color} Setup SystemD Service ${nocolor}"
