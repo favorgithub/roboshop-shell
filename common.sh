@@ -109,7 +109,7 @@ maven(){
   
 }
 
-python(){
+python() {
  echo -e "${color}  Install Python36 ${nocolor}"
  yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
 
