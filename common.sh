@@ -7,7 +7,7 @@ app_presetup(){
 
     echo -e "${color} Add Application User ${nocolor}"
     useradd roboshop &>>$log_file
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo SUCCESS
     else
       echo FAILURE
@@ -16,7 +16,7 @@ app_presetup(){
     echo -e "${color} Create Application Directory ${nocolor}"
     rm -rf ${app_path} &>>$log_file
     mkdir ${app_path}
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo SUCCESS
     else
       echo FAILURE
@@ -25,7 +25,7 @@ app_presetup(){
     echo -e "${color} Download Application Content ${nocolor}"
     curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
     cd ${app_path}
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
      echo SUCCESS
     else
      echo FAILURE
@@ -34,7 +34,7 @@ app_presetup(){
     echo -e "${color} Extract Application content ${nocolor}"
     cd ${app_path}
     unzip /tmp/$component.zip &>>$log_file
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo SUCCESS
     else
       echo FAILURE
@@ -45,7 +45,7 @@ systemd_setup(){
 
     echo -e "${color} Setup SystemD Service ${nocolor}"
     cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
      echo SUCCESS
     else
      echo FAILURE
@@ -55,7 +55,7 @@ systemd_setup(){
     systemctl daemon-reload &>>$log_file
     systemctl enable $component &>>$log_file
     systemctl restart $component &>>$log_file
-    if [ $? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo SUCCESS
     else
       echo FAILURE
@@ -125,7 +125,7 @@ python(){
  echo -e "${color}  Install Python36 ${nocolor}"
  yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
 
- if [ $? -eq 0]; then
+ if [ $? -eq 0 ]; then
    echo SUCCESS
  else
    echo FAILURE
@@ -136,7 +136,7 @@ python(){
  echo -e "${color} Install Application Dependencies ${nocolor}"
  cd /app
  pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
- if [ $? -eq 0]; then
+ if [ $? -eq 0 ]; then
    echo SUCCESS
  else
    echo FAILURE
