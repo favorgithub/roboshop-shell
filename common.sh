@@ -8,7 +8,7 @@ app_presetup(){
     echo -e "${color} Add Application User ${nocolor}"
     useradd roboshop &>>$log_file
     if [ $? -eq 0]; then
-      echo "SUCCESS"
+      echo SUCCESS
     else
       echo FAILURE
     fi
@@ -17,7 +17,7 @@ app_presetup(){
     rm -rf ${app_path} &>>$log_file
     mkdir ${app_path}
     if [ $? -eq 0]; then
-      echo "SUCCESS"
+      echo SUCCESS
     else
       echo FAILURE
     fi
@@ -26,7 +26,7 @@ app_presetup(){
     curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
     cd ${app_path}
     if [ $? -eq 0]; then
-     echo "SUCCESS"
+     echo SUCCESS
     else
      echo FAILURE
     fi
@@ -35,7 +35,7 @@ app_presetup(){
     cd ${app_path}
     unzip /tmp/$component.zip &>>$log_file
     if [ $? -eq 0]; then
-      echo "SUCCESS"
+      echo SUCCESS
     else
       echo FAILURE
     fi
@@ -46,7 +46,7 @@ systemd_setup(){
     echo -e "${color} Setup SystemD Service ${nocolor}"
     cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
     if [ $? -eq 0]; then
-     echo "SUCCESS"
+     echo SUCCESS
     else
      echo FAILURE
     fi
@@ -56,7 +56,7 @@ systemd_setup(){
     systemctl enable $component &>>$log_file
     systemctl restart $component &>>$log_file
     if [ $? -eq 0]; then
-      echo "SUCCESS"
+      echo SUCCESS
     else
       echo FAILURE
     fi
@@ -126,7 +126,7 @@ python(){
  yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
 
  if [ $? -eq 0]; then
-   echo "SUCCESS"
+   echo SUCCESS
  else
    echo FAILURE
  fi
@@ -137,7 +137,7 @@ python(){
  cd /app
  pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
  if [ $? -eq 0]; then
-   echo "SUCCESS"
+   echo SUCCESS
  else
    echo FAILURE
  fi
