@@ -105,29 +105,24 @@ maven(){
 
   
   mysql_schema_setup
-  systemd_setup
-  
-}
-
-python() {
- echo -e "${color}  Install Python36 ${nocolor}"
- yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
-
- stat_check $?
-
- app_presetup
-
- echo -e "${color} Install Application Dependencies ${nocolor}"
- cd /app
- pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
- stat_check $?
-
- sed -i -e "s/roboshop_app_password/$1/" /home/centos/roboshop-shell/$component.service
- systemd_setup
 
 
+  }
 
+  python() {
+   echo -e "${color}  Install Python36 ${nocolor}"
+   yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
 
+   stat_check $?
 
+   app_presetup
 
+   echo -e "${color} Install Application Dependencies ${nocolor}"
+   cd /app
+   pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
+   stat_check $?
 
+   sed -i -e "s/roboshop_app_password/$1/" /home/centos/roboshop-shell/$component.service
+   systemd_setup
+
+   }
