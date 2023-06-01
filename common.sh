@@ -108,7 +108,7 @@ maven(){
 
   systemd_setup
   
-}
+
 
 python(){
  echo -e "${color}  Install Python36 ${nocolor}"
@@ -125,5 +125,4 @@ stat_check $?
 
  sed -i -e "s/roboshop_app_password/$1/" /home/centos/roboshop-shell/$component.service
 systemd_setup
-
 }
