@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[33m Install goland \e[0m"
 yum install golang -y &>>/tmp/roboshop.log
 
