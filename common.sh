@@ -104,7 +104,7 @@ mysql_schema_setup(){
     stat_check $?
 
     echo -e "${color} Load Schema ${nocolor}"
-    mysql -h mysql-dev.devopsblessed.store -uroot -p${mysql_root_password} < ${app_path}/schema/${component}.sql &>>$log_file
+    mysql -h mysql-dev.devopsblessed.store -uroot -p${mysql_root_password} < ${app_path}/home/schema/${component}.sql &>>$log_file
     stat_check $?
 }
 
