@@ -4,4 +4,3 @@ component=cart
 
 nodejs
 
-mongo_schema_setup
